@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: all 0.5s ease;
+}
+
+.loaderProgress {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  text-shadow: 0 0 7px #fff;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.custom-loader {
+  width: 60px;
+  height: 25px;
+  border: 2px solid #f4f4f4;
+  border-radius: 50%;
+  display: grid;
+  animation: h2 2s infinite linear;
+}
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  grid-area: 1/1;
+  border: inherit;
+  border-radius: 50%;
+  animation: inherit;
+  animation-duration: 3s;
+}
+.custom-loader:after {
+  --s: -1;
+}
+
+@keyframes h2 {
+  100% {
+    transform: rotate(calc(var(--s, 1) * 1turn));
+  }
+}
