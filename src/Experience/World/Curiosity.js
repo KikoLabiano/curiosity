@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import Experience from "../Experience";
-import { name } from "generator-code/generators/app/generate-colortheme";
 
 export default class Curiosity {
   constructor() {
