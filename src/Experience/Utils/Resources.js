@@ -3,6 +3,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 import { GroundProjectedSkybox } from "three/addons/objects/GroundProjectedSkybox.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js"; // Asegúrate de que la ruta es correcta
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 import Experience from "../Experience";
 
@@ -36,7 +37,10 @@ export default class Resources extends EventEmitter {
   setLoaders() {
     this.loaders = {};
     this.loaders.gltfLoader = new GLTFLoader();
-    this.loaders.gltfLoader.setMeshoptDecoder(MeshoptDecoder);
+    // this.loaders.gltfLoader.setMeshoptDecoder(MeshoptDecoder);
+    this.loaders.dracoLoader = new DRACOLoader();
+    this.loaders.dracoLoader.setDecoderPath("../draco/");
+    this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
     this.loaders.textureLoader = new THREE.TextureLoader();
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader();
     this.loaders.rgbeLoader = new RGBELoader();
@@ -51,6 +55,10 @@ export default class Resources extends EventEmitter {
             this.sourceLoaded(source, file);
           });
           break;
+        case "dracoModel":
+          this.loaders.gltfLoader.load(source.path, (file) => {
+            this.sourceLoaded(source, file);
+          });
         case "texture":
           this.loaders.textureLoader.load(source.path, (file) => {
             this.sourceLoaded(source, file);
