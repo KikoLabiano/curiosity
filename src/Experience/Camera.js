@@ -9,11 +9,6 @@ export default class Camera {
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene.instance;
     this.canvas = this.experience.canvas;
-    this.debug = this.experience.debug;
-
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui.addFolder("Camera");
-    }
 
     this.setInstance();
     this.setOrbitControls();

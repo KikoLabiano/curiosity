@@ -14,7 +14,7 @@ export default class Floor {
   }
 
   setGeometry() {
-    this.geometry = new THREE.CircleGeometry(20, 64);
+    this.geometry = new THREE.CircleGeometry(10, 6);
   }
 
   setTextures() {
@@ -22,18 +22,18 @@ export default class Floor {
 
     this.textures.color = this.resources.items.marsGroundColorTexture;
     this.textures.color.colorSpace = THREE.SRGBColorSpace;
-    this.textures.color.repeat.set(8, 8);
+    this.textures.color.repeat.set(3, 3);
     this.textures.color.wrapS = THREE.RepeatWrapping;
     this.textures.color.wrapT = THREE.RepeatWrapping;
 
     this.textures.normal = this.resources.items.marsGroundNormalTexture;
-    this.textures.normal.repeat.set(8, 8);
+    this.textures.normal.repeat.set(3, 3);
     this.textures.normal.wrapS = THREE.RepeatWrapping;
     this.textures.normal.wrapT = THREE.RepeatWrapping;
 
     this.textures.aoMetalnessRoughness =
       this.resources.items.marsGroundAOMetallnessRoughnessTexture;
-    this.textures.aoMetalnessRoughness.repeat.set(8, 8);
+    this.textures.aoMetalnessRoughness.repeat.set(3, 3);
     this.textures.aoMetalnessRoughness.wrapS = THREE.RepeatWrapping;
     this.textures.aoMetalnessRoughness.wrapT = THREE.RepeatWrapping;
   }
@@ -45,7 +45,6 @@ export default class Floor {
       aoMap: this.textures.aoMetalnessRoughness,
       metalnessMap: this.textures.aoMetalnessRoughness,
       roughnessMap: this.textures.aoMetalnessRoughness,
-      displacementMap: this.textures.displacement,
       metalness: 0.2,
     });
   }

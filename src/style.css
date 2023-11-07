@@ -15,6 +15,57 @@ body {
   outline: none;
 }
 
+.descriptionContainer {
+  display: none;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  min-width: 280px;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.flickeringContainer {
+  width: fit-content;
+  background-color: black;
+  color: white;
+  animation: flickerAnimation 2s infinite;
+}
+
+.specificationsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.description,
+.weight,
+.launchDate,
+.landingDate,
+.status,
+.location,
+.size {
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre;
+  font-weight: 500;
+  color: white;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.description {
+  border-bottom: 1px solid white;
+}
+
 .loaderContainer {
   display: flex;
   flex-direction: column;

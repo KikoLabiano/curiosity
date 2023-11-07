@@ -8,6 +8,8 @@ import Resources from "./Utils/Resources";
 import sources from "./sources";
 import Debug from "./Utils/Debug";
 import Scene from "./Scene";
+import RayCaster from "./RayCaster";
+import Device from "./Utils/Device";
 
 let instance = null;
 
@@ -31,8 +33,10 @@ export default class Experience {
     this.scene = new Scene();
     this.resources = new Resources(sources);
     this.camera = new Camera();
-    this.renderer = new Renderer();
+    this.raycaster = new RayCaster();
+    this.device = new Device();
     this.world = new World();
+    this.renderer = new Renderer();
 
     this.sizes.on("resize", () => {
       this.resize();
@@ -51,6 +55,7 @@ export default class Experience {
   update() {
     this.camera.update();
     this.world.update();
+    this.raycaster.update();
     this.renderer.update();
   }
 
